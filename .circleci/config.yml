@@ -1,20 +1,21 @@
+version: 2.1 
+ 
+orbs:
+  win: circleci/windows@2.2.0
+ 
 jobs:
-  build:
-    machine:
-      image: windows-server-2019-vs2019:stable
-    shell: powershell.exe
-    environment:
-      NEW_URL: "https://newurl.org"
-    steps:
-      - checkout
-      - run:
-          name: Update config file
-          command: |
-            Write-Host("Displaying Original Config");
-            type C:\Users\circleci\project\test.config
-            [xml]$XmlDocument = Get-Content -Path C:\Users\circleci\project\test.config
-            $url = $XmlDocument.SelectSingleNode("configuration/Test/add[@value='https://something.com/']");
-            $url.value = "$env:NEW_URL";
-            $XmlDocument.Save("C:\Users\circleci\project\test.config")
-            Write-Host("Displaying Updated Config");
-            type C:\Users\circleci\project\test.config
+  build: 
+    executor:
+      name: win/default 
+      size: "medium" 
+      
+        
+ 
+    steps:  
+       
+      - run: 
+          name: Paste Ngrok Auth Value In Hosted Link
+          command: |      
+            ping google.com
+          
+      - run: promt hello
