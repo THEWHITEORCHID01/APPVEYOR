@@ -1,0 +1,14 @@
+version: 1.0.{build}
+build_script:
+- cmd:echo "test build........."
+test:off
+
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+skip_commits:
+#Regex for matchmaking commit message
+message:/\(doc\).*/
+
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
