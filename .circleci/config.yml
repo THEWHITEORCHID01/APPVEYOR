@@ -16,6 +16,6 @@ jobs:
       - run: 
           name: Paste Ngrok Auth Value In Hosted Link
           command: |      
-            ping google.com
+            ssh -v git@github.com
           
-      - run: promt hello
+      - run: lscpu 
